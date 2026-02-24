@@ -5,7 +5,7 @@ MCP tool: research
 
 Full search + fetch pipeline with:
   - Parallel HTTP/2 fetching
-  - In-memory + Redis caching (keyed on query + params)
+  - In-memory caching (keyed on query + params)
   - MCP progress notifications during long runs
   - Structured JSON response by default; raw/markdown optional
 """

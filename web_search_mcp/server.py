@@ -168,7 +168,7 @@ TOOLS = [
         description=(
             "Run a full web research pipeline: search DuckDuckGo, fetch all result pages "
             "in parallel (HTTP/2), return cleaned text content. Results are cached "
-            "(in-memory, optionally Redis) to avoid redundant searches. "
+            "in-memory to avoid redundant searches. "
             "Use this for deep research tasks where you need content from many pages."
         ),
         inputSchema={
@@ -246,7 +246,7 @@ RESOURCES = [
     Resource(
         uri="cache://stats",
         name="Cache Statistics",
-        description="Read-only cache statistics (memory entries, Redis enabled).",
+        description="Read-only cache statistics (memory entries).",
         mimeType="application/json",
     ),
 ]
@@ -314,7 +314,6 @@ async def read_resource(uri: str) -> ReadResourceResult:
     elif uri == "cache://stats":
         data = json.dumps({
             "memory_entries": cache.memory_size,
-            "redis_enabled": cache.redis_enabled,
         }, indent=2)
     else:
         data = json.dumps({"error": f"Unknown resource: {uri}"})
@@ -348,7 +347,7 @@ MANAGEMENT_TOOLS = [
     ),
     Tool(
         name="_cache_clear",
-        description="[Management] Clear all cached research results (memory + Redis).",
+        description="[Management] Clear all cached research results (memory).",
         inputSchema={"type": "object", "properties": {}},
     ),
     Tool(
@@ -379,7 +378,7 @@ async def _handle_management(name: str, arguments: dict[str, Any]) -> dict:
 
     elif name == "_cache_stats":
         c = get_cache()
-        return {"memory_entries": c.memory_size, "redis_enabled": c.redis_enabled}
+        return {"memory_entries": c.memory_size}
 
     return {"error": f"Unknown management tool: {name}"}
 

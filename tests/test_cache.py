@@ -71,10 +71,12 @@ def test_cache_key_different_queries():
 
 @pytest.mark.asyncio
 async def test_research_cache_memory_only():
-    """ResearchCache without Redis uses memory tier only."""
+    """ResearchCache uses in-memory LRU."""
     rc = ResearchCache()
-    assert rc.redis_enabled is False
+    assert rc.memory_size == 0
     await rc.set("k", {"result": 42})
     assert await rc.get("k") == {"result": 42}
+    assert rc.memory_size == 1
     await rc.clear()
     assert await rc.get("k") is None
+    assert rc.memory_size == 0

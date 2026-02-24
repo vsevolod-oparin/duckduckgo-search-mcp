@@ -60,31 +60,15 @@ Add to your `claude_desktop_config.json` (or equivalent):
 }
 ```
 
-## Optional Extensions
-
-### Redis Cache
-
-Set `REDIS_URL` to enable cross-session result caching:
-
-```bash
-REDIS_URL=redis://localhost:6379/0 uv run web-search-mcp
-```
+## Optional Configuration
 
 | Env var | Default | Description |
 |---------|---------|-------------|
-| `REDIS_URL` | *(empty)* | Redis URL; if absent, memory-only |
 | `CACHE_TTL_MEM` | `3600` | In-memory TTL (seconds) |
-| `CACHE_TTL_REDIS` | `21600` | Redis TTL (seconds) |
 | `CACHE_MAX_SIZE` | `128` | Max in-memory entries |
 | `LOG_LEVEL` | `WARNING` | Logging level |
 
-Install Redis support:
-
-```bash
-uv add redis
-```
-
-### Runtime Filter Updates
+## Runtime Filter Updates
 
 Use the `_update_filters` tool to extend or replace filter lists without restarting:
 
@@ -117,7 +101,7 @@ web_search_mcp/
 │   ├── ddg.py             # DuckDuckGo search wrapper
 │   ├── pipeline.py        # Async search+fetch producer/consumer pipeline
 │   ├── formatters.py      # JSON / raw / markdown output formatters
-│   └── cache.py           # Two-tier cache (memory + optional Redis)
+│   └── cache.py           # In-memory LRU cache
 ├── tools/
 │   ├── search.py          # search_web handler
 │   ├── fetch.py           # fetch_page handler
