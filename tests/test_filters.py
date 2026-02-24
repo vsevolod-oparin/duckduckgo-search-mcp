@@ -1,6 +1,6 @@
 """Tests for core/filters.py"""
 import pytest
-from web_search_mcp.core.filters import FilterConfig, get_filter_config
+from duckduckgo_search_mcp.core.filters import FilterConfig, get_filter_config
 
 
 def make_cfg() -> FilterConfig:

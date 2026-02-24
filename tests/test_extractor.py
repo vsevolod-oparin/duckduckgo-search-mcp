@@ -1,6 +1,6 @@
 """Tests for core/extractor.py"""
 import pytest
-from web_search_mcp.core.extractor import extract_text, extract_title_from_content, clean_text
+from duckduckgo_search_mcp.core.extractor import extract_text, extract_title_from_content, clean_text
 
 
 def test_extract_title():
@@ -57,8 +57,8 @@ def test_clean_text():
 
 def test_truncation_marker():
     """Content over max_length should get truncated marker."""
-    from web_search_mcp.core.config import FetchResult
-    from web_search_mcp.core.extractor import extract_title_from_content
+    from duckduckgo_search_mcp.core.config import FetchResult
+    from duckduckgo_search_mcp.core.extractor import extract_title_from_content
 
     # Simulate what _make_fetch_result does
     long_content = "x" * 10000

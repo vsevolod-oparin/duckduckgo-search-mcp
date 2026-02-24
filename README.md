@@ -33,21 +33,38 @@ Generic web research MCP server built on top of DuckDuckGo + httpx.
 ## Installation
 
 ```bash
-# Clone and install
+# Clone the repository
 git clone <repo>
 cd duckduckgo-search-mcp
-uv sync
+
+# Install in editable mode (recommended)
+pip install -e .
+
+# Or with uv
+uv pip install -e .
 ```
 
 ## Running
 
 ```bash
-uv run duckduckgo-search-mcp
+duckduckgo-search-mcp
 ```
 
 ## MCP Client Configuration
 
 Add to your `claude_desktop_config.json` (or equivalent):
+
+```json
+{
+  "mcpServers": {
+    "duckduckgo-search": {
+      "command": "duckduckgo-search-mcp"
+    }
+  }
+}
+```
+
+**Alternative (without installing globally):**
 
 ```json
 {
@@ -84,14 +101,20 @@ Use the `_update_filters` tool to extend or replace filter lists without restart
 ## Development
 
 ```bash
+# Install with dev dependencies
 uv sync --extra dev
+
+# Run tests
 uv run pytest tests/ -v
+
+# Or with pytest directly if installed
+pytest tests/ -v
 ```
 
 ## Architecture
 
 ```
-web_search_mcp/
+duckduckgo_search_mcp/
 ├── server.py              # MCP server: tools, resources, prompts
 ├── core/
 │   ├── config.py          # ResearchConfig, FetchResult, ResearchStats

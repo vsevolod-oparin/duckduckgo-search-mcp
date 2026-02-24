@@ -1,8 +1,8 @@
 """Tests for core/formatters.py"""
 import json
 import pytest
-from web_search_mcp.core.config import FetchResult, ResearchStats
-from web_search_mcp.core.formatters import (
+from duckduckgo_search_mcp.core.config import FetchResult, ResearchStats
+from duckduckgo_search_mcp.core.formatters import (
     format_json,
     format_markdown,
     format_raw,

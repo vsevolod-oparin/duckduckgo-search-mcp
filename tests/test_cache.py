@@ -1,7 +1,7 @@
 """Tests for core/cache.py"""
 import asyncio
 import pytest
-from web_search_mcp.core.cache import _LRUCache, make_cache_key, ResearchCache
+from duckduckgo_search_mcp.core.cache import _LRUCache, make_cache_key, ResearchCache
 
 
 @pytest.mark.asyncio
