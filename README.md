@@ -35,14 +35,14 @@ Generic web research MCP server built on top of DuckDuckGo + httpx.
 ```bash
 # Clone and install
 git clone <repo>
-cd web-search-mcp
+cd duckduckgo-search-mcp
 uv sync
 ```
 
 ## Running
 
 ```bash
-uv run web-search-mcp
+uv run duckduckgo-search-mcp
 ```
 
 ## MCP Client Configuration
@@ -52,9 +52,9 @@ Add to your `claude_desktop_config.json` (or equivalent):
 ```json
 {
   "mcpServers": {
-    "web-search": {
+    "duckduckgo-search": {
       "command": "uv",
-      "args": ["--directory", "/path/to/web-search-mcp", "run", "web-search-mcp"]
+      "args": ["--directory", "/path/to/duckduckgo-search-mcp", "run", "duckduckgo-search-mcp"]
     }
   }
 }

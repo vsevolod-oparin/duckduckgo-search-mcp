@@ -255,7 +255,7 @@ RESOURCES = [
 # Server setup
 # ---------------------------------------------------------------------------
 
-app = Server("web-search-mcp")
+app = Server("duckduckgo-search-mcp")
 
 
 @app.list_tools()
@@ -451,7 +451,7 @@ async def get_prompt(name: str, arguments: dict[str, str] | None = None) -> GetP
 # ---------------------------------------------------------------------------
 
 async def _serve() -> None:
-    logger.info("Starting web-search-mcp server")
+    logger.info("Starting duckduckgo-search-mcp server")
     async with stdio_server() as (read_stream, write_stream):
         await app.run(
             read_stream,

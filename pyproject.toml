@@ -18,7 +18,7 @@ dependencies = [
 dev   = ["pytest>=8.0.0", "pytest-asyncio>=0.23.0", "anyio>=4.0.0"]
 
 [project.scripts]
-web-search-mcp = "duckduckgo_search_mcp.server:main"
+duckduckgo-search-mcp = "duckduckgo_search_mcp.server:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["duckduckgo_search_mcp"]
